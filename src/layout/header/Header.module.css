@@ -1,0 +1,18 @@
+.header {
+  @apply flex justify-between items-center py-2.5 border-b border-gray-border;
+}
+
+.input {
+  outline: none;
+  background-color: #151515;
+  @apply border border-gray-border rounded-md py-1 px-2.5 h-8;
+}
+
+.switchBtn {
+  background-color: #746052;
+  @apply p-1 rounded-md h-8;
+
+  span {
+    @apply inline-block text-2xl i-solar:moon-linear dark:i-solar:sun-2-linear;
+  }
+}

@@ -1,0 +1,35 @@
+/*:root {*/
+/*  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;*/
+
+/*  color: rgba(255, 255, 255, 0.87);*/
+/*  !*background-color: #2d2d2d;*!*/
+
+/*  font-synthesis: none;*/
+/*  text-rendering: optimizeLegibility;*/
+/*  -webkit-font-smoothing: antialiased;*/
+/*  -moz-osx-font-smoothing: grayscale;*/
+/*  @apply bg-black;*/
+/*}*/
+
+body {
+  @apply transition-colors bg-white dark:bg-black-main dark:text-white font-inter font-300;
+}
+
+#root {
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: auto 1fr;
+  @apply grid h-svh;
+
+  & > header {
+    @apply col-span-2;
+  }
+
+  & > aside {
+    background-color: #242424;
+    @apply p-4;
+  }
+
+  & > main {
+    @apply py-4 px-8;
+  }
+}
