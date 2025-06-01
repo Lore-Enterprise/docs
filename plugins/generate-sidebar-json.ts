@@ -84,13 +84,23 @@ function collectNums (entries: fs.Dirent[], dir: string): Set<number> {
   return usedNums
 }
 
-// TODO: REWRITE!
 /**
- * Функция для рекурсивного обхода директории <br/>
- * Получает список файлов и папок в dir (используя `fs.readdirSync`) <br/>
- * `withFileTypes: true` позволяет различать файлы и папки
+ * Recursively creates structure of the sidebar from files and folders inside specified directory
+ *
+ * - Iterates through all entries (files and folders) in the given `dir`.
+ * - If an entry is a directory, reads its metadata and recursively processes its contents.
+ * - If an entry is a Markdown file (`.md` or `.mdx`), extracts metadata using `gray-matter`
+ *   and constructs an object to be displayed in the sidebar.
+ * - Assigns unique `num` values for sorting, based on the `order` field from .yaml file in the directory's
+ *   or the `order` from the metadata of the md/mdx file.
+ * - Returns an array of `SidebarItem[]`, sorted by `num` at each nesting level.
+ *
+ * @param dir - Absolute path to the directory
+ * @param base - Relative path from the project root (used to generate URLs)
+ * @returns An array of `SidebarItem` objects representing the navigation structure
  */
 function createJSON(dir: string, base = ""): SidebarItem[] {
+  // Reads the contents of the directory `dir` and returns an array of data
   const entries = fs.readdirSync(dir, { withFileTypes: true })
   const usedNums = collectNums(entries, dir)
 
