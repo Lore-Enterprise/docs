@@ -25,7 +25,7 @@ export default function Header() {
           <input type="text" className={styles.input} />
         </form>
         <button onClick={toggle} className={styles.switchBtn}>
-          <span></span>
+          <span className="i-solar:moon-linear dark:i-solar:sun-2-linear"></span>
         </button>
       </div>
     </header>

@@ -1,11 +1,10 @@
 .header {
-  @apply flex justify-between items-center py-2.5 border-b border-gray-border;
+  @apply flex justify-between items-center px-2 py-2.5 border-b border-gray-light dark:border-gray-dark;
 }
 
 .input {
   outline: none;
-  background-color: #151515;
-  @apply border border-gray-border rounded-md py-1 px-2.5 h-8;
+  @apply border border-gray-light dark:border-gray-dark rounded-md py-1 px-2.5 h-8 dark:bg-black-secondary;
 }
 
 .switchBtn {
@@ -13,6 +12,6 @@
   @apply p-1 rounded-md h-8;
 
   span {
-    @apply inline-block text-2xl i-solar:moon-linear dark:i-solar:sun-2-linear;
+    @apply inline-block text-2xl;
   }
 }
