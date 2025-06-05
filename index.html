@@ -5,6 +5,18 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Documentation</title>
+
+  <!-- fix flashlight when reload page with dark theme -->
+    <script>
+      (function() {
+        try {
+          const isDark = JSON.parse(localStorage.getItem("isDarkMode"))
+          if (isDark) {
+            document.documentElement.classList.add("dark")
+          }
+        } catch (e) {}
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>
