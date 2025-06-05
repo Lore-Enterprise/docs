@@ -1,8 +1,8 @@
-import fs from "fs" // Работа с файловой системой (чтение/запись файлов, работа с директориями)
-import path from "path" // Модуль для работы с путями файлов и директорий
-import { Plugin } from "vite" // Импорт типа `Plugin` из Vite (для создания Vite-плагинов)
-import matter from "gray-matter" // Библиотека для работы с фронтматтером (метаданные в `.mdx` файлах)
-import yaml from "js-yaml"
+import fs from "fs" // File system operations (reading/writing files, working with directories)
+import path from "path" // Module for working with file and directory paths
+import { Plugin } from "vite" // The `Plugin` type from Vite (for creating Vite plugins)
+import matter from "gray-matter" // Library for working with metadata in `.mdx/.md` files
+import yaml from "js-yaml" // Library for converting YAML to JS objects
 
 const DOCS_DIR = path.resolve(process.cwd(), "docs")
 const OUTPUT_FILE = path.resolve(process.cwd(), "src/sidebar.json")
@@ -24,7 +24,7 @@ function capitalize(str: string): string {
 function readMetaDirectory(dir: string): Record<string, any> {
   const metaPath = path.join(dir, ".yaml")
 
-  if (fs.existsSync(metaPath)) { // Проверяем, существует ли файл
+  if (fs.existsSync(metaPath)) { // Check if the file exists
     try {
       const content = fs.readFileSync(metaPath, { encoding: "utf-8" })
       return yaml.load(content) as Record<string, any>
