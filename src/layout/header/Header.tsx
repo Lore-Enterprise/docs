@@ -19,7 +19,7 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <div>Documentation</div>
+      <div className="font-600 text-xl leading-none">Documentation</div>
       <div className="flex items-center space-x-xs">
         <form action="">
           <input type="text" className={styles.input} />

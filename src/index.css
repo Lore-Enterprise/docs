@@ -12,7 +12,7 @@
 /*}*/
 
 body {
-  @apply transition-colors bg-white dark:bg-black-main dark:text-white font-inter font-300;
+  @apply transition-colors bg-white dark:bg-black-main dark:text-white-darker font-inter font-300;
 }
 
 #root {
@@ -25,8 +25,7 @@ body {
   }
 
   & > aside {
-    background-color: #242424;
-    @apply p-4;
+    @apply px-4 pt-4 border-r border-gray-light dark:border-gray-dark;
   }
 
   & > main {

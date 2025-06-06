@@ -37,11 +37,20 @@ export default defineConfig({
         main: "#111111",
         secondary: "#151515"
       },
+      white: {
+        DEFAULT: "#fff",
+        darker: "#f5f5f5"
+      },
       gray: {
         DEFAULT: "#9CA3AF",
-        dark: "#373737",
-        light: "#cccccc"
+        dark: "#5C5C5C",
+        light: "#cccccc",
+        text: "#8E8E8E"
       },
+      brown: {
+        dark: "#746052",
+        light: "#d9ac8d",
+      }
     },
   },
 })
