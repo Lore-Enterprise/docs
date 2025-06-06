@@ -1,3 +1,25 @@
+.nav {
+  ul {
+    @apply mb-5;
+  }
+
+  li {
+    @apply mb-1;
+
+    &:first-child {
+      h3 { @apply mt-0; }
+    }
+  }
+
+  h3 {
+    @apply mb-[0.625rem] mt-5 font-500;
+  }
+}
+
 .link {
-   @apply block py-1 px-2;
+   @apply block p-2 border-gray-light rounded-md leading-none text-gray-text hover:bg-black/25;
+}
+
+.active {
+  @apply dark:text-white-darker dark:bg-black/40;
 }

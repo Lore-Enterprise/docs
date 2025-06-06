@@ -1,12 +1,7 @@
 [
   {
-    "title": "Test",
-    "num": 1,
-    "path": "/test"
-  },
-  {
     "title": "Tutorial",
-    "num": 2,
+    "num": 1,
     "children": [
       {
         "title": "Overview",
@@ -27,7 +22,12 @@
   },
   {
     "title": "Index",
-    "num": 5,
+    "num": 4,
     "path": "/index"
+  },
+  {
+    "title": "Test",
+    "num": 5,
+    "path": "/test"
   }
 ]
