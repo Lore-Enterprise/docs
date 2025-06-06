@@ -27,15 +27,20 @@ export default defineConfig({
   transformers: [
     transformerDirectives(),
   ],
+  // shortcuts: {
+  //   "container": "max-w-screen-xl mx-auto",
+  // },
   theme: {
     colors: {
       black: {
         DEFAULT: "#000000",
         main: "#111111",
+        secondary: "#151515"
       },
       gray: {
         DEFAULT: "#9CA3AF",
-        border: "#373737",
+        dark: "#373737",
+        light: "#cccccc"
       },
     },
   },
