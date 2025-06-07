@@ -6,8 +6,8 @@ import clearMetaMdx from "./plugins/clear-meta-mdx"
 import UnoCSS from "unocss/vite"
 
 // https://vite.dev/config/
-export default defineConfig({
-  base: "/docs",
+export default defineConfig(({mode}) => ({
+  base: mode === "production" ? "/docs" : "/",
   plugins: [
     clearMetaMdx(),
     generateSidebarJson(),
@@ -18,4 +18,4 @@ export default defineConfig({
   css: {
     devSourcemap: true
   }
-})
+}))
