@@ -13,12 +13,12 @@ export default function Sidebar() {
   }, [])
 
   const renderItems = (items: SidebarItem[]) => (
-    <ul>
+    <ul className="no-before">
       {items.map((item) => (
         <li key={item.num}>
           { item.children ? (
             <>
-              <h3>{item.title}</h3>
+              <h6>{item.title}</h6>
               {renderItems(item.children)}
             </>
           ) : (

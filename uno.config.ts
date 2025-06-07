@@ -45,7 +45,8 @@ export default defineConfig({
         DEFAULT: "#9CA3AF",
         dark: "#5C5C5C",
         light: "#cccccc",
-        text: "#8E8E8E"
+        text: "#8E8E8E",
+        textLighter: "#9E9E9E",
       },
       brown: {
         dark: "#746052",

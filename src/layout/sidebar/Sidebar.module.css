@@ -7,19 +7,21 @@
     @apply mb-1;
 
     &:first-child {
-      h3 { @apply mt-0; }
+      h6 { @apply mt-0; }
     }
   }
 
-  h3 {
+  h6 {
     @apply mb-[0.625rem] mt-5 font-500;
   }
 }
 
 .link {
-   @apply block p-2 border-gray-light rounded-md leading-none text-gray-text hover:bg-black/25;
+  @apply block p-2 border border-transparent rounded-md leading-none
+  dark:text-gray-text dark:hover:text-white-darker;
 }
 
 .active {
-  @apply dark:text-white-darker dark:bg-black/40;
+  @apply border border-brown-light bg-brown-light/25
+  dark:border-brown-dark dark:text-white-darker dark:bg-brown-dark/25;
 }

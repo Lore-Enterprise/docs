@@ -1,16 +1,54 @@
-/*:root {*/
-/*  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;*/
+/* BASE STYLES */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-500 leading-none;
+}
+h1 {
+  font-size: 3rem; /* 48px */
+  @apply mb-6;
+}
+h2 {
+  font-size: 2.5rem; /* 40px */
+  @apply mb-4;
+}
+h3 {
+  font-size: 2rem; /* 32px */
+  @apply mb-3;
+}
+h4 {
+  font-size: 1.5rem; /* 24px */
+  line-height: 2rem; /* 32px */
+  @apply mb-2;
+}
+h5 {
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.75rem; /* 28px */
+  margin-bottom: 0.375rem; /* 6px */
+}
+h6 {
+  font-size: 1rem; /* 16px */
+  line-height: 1.5rem; /* 24px */
+  @apply mb-1;
+}
 
-/*  color: rgba(255, 255, 255, 0.87);*/
-/*  !*background-color: #2d2d2d;*!*/
+p {
+  margin: 10px 0;
+  @apply dark:text-gray-textLighter;
+}
 
-/*  font-synthesis: none;*/
-/*  text-rendering: optimizeLegibility;*/
-/*  -webkit-font-smoothing: antialiased;*/
-/*  -moz-osx-font-smoothing: grayscale;*/
-/*  @apply bg-black;*/
-/*}*/
+ul, ol {
+  margin: 10px 0;
+}
+ul li::before {
+  content: "-";
+  @apply mr-2;
+}
+.no-before li::before {
+  content: none;
+  @apply mr-0;
+}
 
+
+/* CUSTOM STYLES */
 body {
   @apply transition-colors bg-white dark:bg-black-main dark:text-white-darker font-inter font-300;
 }
