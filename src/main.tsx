@@ -7,9 +7,11 @@ import "virtual:uno.css"
 import "@unocss/reset/tailwind-compat.css"
 import "./index.css"
 
+const isProd = import.meta.env.MODE === "production"
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={isProd ? "/docs" : "/"}>
       <App />
     </BrowserRouter>
   </StrictMode>,
