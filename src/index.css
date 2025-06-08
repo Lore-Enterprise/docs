@@ -54,7 +54,7 @@ body {
 }
 
 #root {
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr;
   @apply grid h-svh;
 
@@ -63,7 +63,12 @@ body {
   }
 
   & > aside {
-    @apply px-4 pt-4 border-r border-gray-light dark:border-gray-dark;
+    transition: width 0.3s ease, opacity 0.3s ease, padding-left 0.3s ease;
+    @apply border-r border-gray-light dark:border-gray-dark px-0 pt-4 w-0 opacity-0 lg:px-4 lg:opacity-100 lg:w-[200px];
+
+    &.open {
+      @apply px-4 w-[200px] opacity-100;
+    }
   }
 
   & > main {

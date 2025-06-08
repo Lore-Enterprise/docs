@@ -8,7 +8,9 @@ export default function App() {
       <Header />
       <Sidebar />
       <main>
-        <RoutesComponent />
+        <div className="container">
+          <RoutesComponent />
+        </div>
       </main>
     </>
   )

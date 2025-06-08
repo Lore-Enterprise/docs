@@ -35,7 +35,7 @@ export default function Sidebar() {
   )
 
   return (
-    <aside>
+    <aside id="sidebar">
       <nav className={styles.nav}>
         {renderItems(sidebarItems)}
       </nav>

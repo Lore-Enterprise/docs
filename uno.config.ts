@@ -27,9 +27,9 @@ export default defineConfig({
   transformers: [
     transformerDirectives(),
   ],
-  // shortcuts: {
-  //   "container": "max-w-screen-xl mx-auto",
-  // },
+  shortcuts: {
+    "container": "max-w-screen-xl mx-auto",
+  },
   theme: {
     colors: {
       black: {
