@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react"
 import { useLocalStorage } from "usehooks-ts"
+import { useSearch } from "../../hooks/useSearch.ts"
 import styles from "./Header.module.css"
 
 export default function Header() {
-  const [value, setValue] = useLocalStorage('isDarkMode', true)
+  const [value, setValue] = useLocalStorage("isDarkMode", true)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const [inputValue, setInputValue] = useState("")
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useSearch(inputValue).then(console.log)
+  }, [inputValue])
 
   useEffect(() => {
     if (value) {
@@ -43,7 +50,7 @@ export default function Header() {
 
       <div className="flex items-center space-x-xs">
         <form action="">
-          <input type="text" className={styles.input} />
+          <input type="text" value={inputValue} onChange={(event) => setInputValue(event.target.value)} className={styles.input} />
         </form>
         <button onClick={toggleTheme} className={styles.switchBtn}>
           <span className="i-solar:moon-linear dark:i-solar:sun-2-linear"></span>
