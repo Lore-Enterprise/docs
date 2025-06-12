@@ -1,25 +1,16 @@
 import { useEffect, useState } from "react"
-import { useLocalStorage } from "usehooks-ts"
 import { useSearch } from "../../hooks/useSearch.ts"
+import useDarkMode from "../../hooks/useDarkMode.ts"
 import styles from "./Header.module.css"
 
 export default function Header() {
-  const [value, setValue] = useLocalStorage("isDarkMode", true)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [inputValue, setInputValue] = useState("")
+  const { toggleDarkMode } = useDarkMode()
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     useSearch(inputValue).then(console.log)
   }, [inputValue])
-
-  useEffect(() => {
-    if (value) {
-      document.documentElement.classList.add("dark")
-    } else {
-      document.documentElement.classList.remove("dark")
-    }
-  }, [value])
 
   useEffect(() => {
     const elem = document.getElementById("sidebar") as HTMLElement
@@ -29,10 +20,6 @@ export default function Header() {
       elem.classList.remove("open")
     }
   }, [isSidebarOpen])
-
-  const toggleTheme = () => {
-    setValue(!value)
-  }
 
   const toggleSidebarOpen = () => {
     setIsSidebarOpen(!isSidebarOpen)
@@ -50,9 +37,14 @@ export default function Header() {
 
       <div className="flex items-center space-x-xs">
         <form action="">
-          <input type="text" value={inputValue} onChange={(event) => setInputValue(event.target.value)} className={styles.input} />
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(event) => setInputValue(event.target.value)}
+            className={styles.input}
+          />
         </form>
-        <button onClick={toggleTheme} className={styles.switchBtn}>
+        <button onClick={toggleDarkMode} className={styles.switchBtn}>
           <span className="i-solar:moon-linear dark:i-solar:sun-2-linear"></span>
         </button>
       </div>
