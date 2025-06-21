@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react"
-import { useSearch } from "../../hooks/useSearch.ts"
 import useDarkMode from "../../hooks/useDarkMode.ts"
 import styles from "./Header.module.css"
+import { useSearch } from "../../hooks/useSearch.ts"
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [inputValue, setInputValue] = useState("")
   const { toggleDarkMode } = useDarkMode()
+  const { results, isReady } = useSearch(inputValue)
 
-  useEffect(() => {
-    useSearch(inputValue).then(console.log)
-  }, [inputValue])
+  console.log(isReady, ' - ' ,results)
 
   useEffect(() => {
     const elem = document.getElementById("sidebar") as HTMLElement
