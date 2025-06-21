@@ -4,6 +4,7 @@ import mdx from "@mdx-js/rollup"
 import generateSidebarJson from "./plugins/generate-sidebar-json"
 import clearMetaMdx from "./plugins/clear-meta-mdx"
 import UnoCSS from "unocss/vite"
+import remarkGfm from "remark-gfm"
 
 // https://vite.dev/config/
 export default defineConfig(({mode}) => ({
@@ -11,7 +12,9 @@ export default defineConfig(({mode}) => ({
   plugins: [
     clearMetaMdx(),
     generateSidebarJson(),
-    mdx(),
+    mdx({
+      remarkPlugins: [remarkGfm] // for generating tables https://remark.js.org/
+    }),
     react(),
     UnoCSS()
   ],

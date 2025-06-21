@@ -12,12 +12,14 @@
   "dependencies": {
     "@mdx-js/react": "^3.1.0",
     "@mdx-js/rollup": "^3.1.0",
+    "@orama/orama": "^3.1.7",
     "@unocss/reset": "^66.1.2",
     "clsx": "^2.1.1",
     "js-yaml": "^4.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router": "^7.2.0",
+    "remark-gfm": "^4.0.1",
     "usehooks-ts": "^3.1.1"
   },
   "devDependencies": {
