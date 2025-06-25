@@ -6,6 +6,8 @@ export default defineConfig({
     presetIcons({
       extraProperties: {
         "vertical-align": "middle",
+        "display": "inline-block",
+        "font-size": "1.5rem",
       },
     }),
     presetWebFonts({
@@ -44,6 +46,7 @@ export default defineConfig({
       gray: {
         DEFAULT: "#9CA3AF",
         dark: "#5C5C5C",
+        darker: "#363636",
         light: "#cccccc",
         text: "#8E8E8E",
         textLighter: "#9E9E9E",

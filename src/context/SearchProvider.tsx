@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useEffect, useState } from "react"
 import { create, insert, Orama } from "@orama/orama"
 import { extractFrontmatter } from "./utils.ts"
+import removeMd from "remove-markdown"
 
 interface ContextType {
   db?: Orama<any>
@@ -39,9 +40,15 @@ export default function SearchProvider({ children }: { children: ReactNode }) {
       for (const path in DOCS) {
         const raw = DOCS[path] as string
         const { data, content } = extractFrontmatter(raw)
+        const rawContent = removeMd(content, {
+          useImgAltText: false,
+          stripListLeaders: false,
+          gfm: true,
+          replaceLinksWithURL: false,
+        })
         const title = data["sidebar-title"]
 
-        await insert(schemaDb, { path, title, content })
+        await insert(schemaDb, { path, title, content: rawContent })
       }
 
       // Don't update state if the component has been unmounted

@@ -2,9 +2,11 @@ import { useEffect, useState } from "react"
 import useDarkMode from "../../hooks/useDarkMode.ts"
 import styles from "./Header.module.css"
 import { useSearch } from "../../hooks/useSearch.ts"
+import clsx from "clsx"
 
 export default function Header() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [inputValue, setInputValue] = useState("")
   const { toggleDarkMode } = useDarkMode()
   const { results, isReady } = useSearch(inputValue)
@@ -20,8 +22,20 @@ export default function Header() {
     }
   }, [isSidebarOpen])
 
+  useEffect(() => {
+    const elem = document.getElementById("search") as HTMLElement
+    if (isSearchOpen) {
+      elem.classList.add("open")
+    } else {
+      elem.classList.remove("open")
+    }
+  }, [isSearchOpen])
+
   const toggleSidebarOpen = () => {
     setIsSidebarOpen(!isSidebarOpen)
+  }
+  const toggleSearchOpen = () => {
+    setIsSearchOpen(!isSearchOpen)
   }
 
   return (
@@ -35,7 +49,7 @@ export default function Header() {
       </div>
 
       <div className="flex items-center space-x-xs">
-        <form action="">
+        <form action="" className="lg:hidden">
           <input
             type="text"
             value={inputValue}
@@ -43,6 +57,10 @@ export default function Header() {
             className={styles.input}
           />
         </form>
+        <button onClick={toggleSearchOpen} className={clsx(styles.searchBtn, isSearchOpen && styles.searchBtnOpen)}>
+          <span className="i-iconamoon:search"></span>
+        </button>
+
         <button onClick={toggleDarkMode} className={styles.switchBtn}>
           <span className="i-solar:moon-linear dark:i-solar:sun-2-linear"></span>
         </button>

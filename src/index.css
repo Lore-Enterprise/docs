@@ -54,24 +54,41 @@ body {
 }
 
 #root {
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1fr auto;
   grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "header header search"
+    "nav main search";
   @apply grid h-svh;
 
   & > header {
+    grid-area: header;
     @apply col-span-2;
   }
 
-  & > aside {
+  & > aside#sidebar {
+    grid-area: nav;
     transition: width 0.3s ease, opacity 0.3s ease, padding-left 0.3s ease;
-    @apply overflow-hidden border-r border-gray-light dark:border-gray-dark px-0 pt-4 w-0 opacity-0 lg:px-4 lg:opacity-100 lg:w-[200px];
+    @apply overflow-hidden border-r border-gray-light dark:border-gray-dark px-0 pt-4 w-0 opacity-0
+    lg:px-4 lg:opacity-100 lg:w-[200px];
 
     &.open {
       @apply px-4 w-[200px] opacity-100;
     }
   }
 
+  & > aside#search {
+    grid-area: search;
+    transition: width 0.3s ease, opacity 0.3s ease, padding-right 0.3s ease;
+    @apply overflow-hidden border-l border-gray-light dark:border-gray-dark px-0 pt-4 w-0 opacity-0;
+
+    &.open {
+      @apply lg:px-4 lg:w-[200px] lg:opacity-100;
+    }
+  }
+
   & > main {
+    grid-area: main;
     @apply py-4 px-8;
   }
 }

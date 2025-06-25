@@ -9,16 +9,15 @@
 
 .burgerMenuBtn {
   @apply bg-transparent p-1 flex justify-center items-center lg:hidden;
+}
 
-  span {
-    @apply inline-block text-2xl;
-  }
+.searchBtn {
+  @apply hidden lg:flex p-1 rounded-md justify-center items-center bg-transparent border border-gray-light dark:border-gray-darker;
+}
+.searchBtnOpen {
+  @apply border-brown-light bg-brown-light/25 dark:bg-brown-dark/25 dark:border-brown-dark;
 }
 
 .switchBtn {
-  @apply p-1 rounded-md flex justify-center items-center bg-brown-light dark:bg-brown-dark;
-
-  span {
-    @apply inline-block text-2xl;
-  }
+  @apply p-1 rounded-md flex justify-center items-center bg-brown-light dark:bg-brown-dark border border-transparent;
 }
