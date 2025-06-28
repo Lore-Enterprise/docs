@@ -11,7 +11,13 @@
 .inputClearBtn {
   top: 50%;
   transform: translateY(-50%);
-  @apply flex absolute right-1 bg-transparent text-gray-dark hover:text-inherit duration-100;
+  transition: transform 0.35s ease;
+  will-change: transform;
+  @apply flex absolute right-1 bg-transparent text-gray-dark hover:text-inherit;
+}
+
+.inputClearBtnHidden {
+  transform: translateY(-50%) translateX(100%) rotate(180deg) scale(0.6);
 }
 
 .burgerMenuBtn {

@@ -1,10 +1,29 @@
+.label {
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.25s ease;
+  will-change: transform;
+  @apply flex items-center absolute left-2.5 dark:text-gray-text pointer-events-none;
+}
+
 .input {
   outline: none;
-  @apply border border-gray-light dark:border-gray-dark rounded-md py-1 px-2.5 h-8 w-full dark:bg-black-secondary;
+  @apply border border-gray-light dark:border-gray-dark rounded-md py-1 pl-2.5 pr-7 h-8 w-full dark:bg-black-secondary;
+}
+
+.input:valid ~ label,
+.input:focus ~ label {
+  transform: translateY(100%);
 }
 
 .inputClearBtn {
   top: 50%;
   transform: translateY(-50%);
-  @apply flex absolute right-1 bg-transparent text-gray-dark hover:text-inherit duration-100;
+  transition: transform 0.35s ease;
+  will-change: transform;
+  @apply flex absolute right-1 bg-transparent text-gray-dark hover:text-inherit;
+}
+
+.inputClearBtnHidden {
+  transform: translateY(-50%) translateX(100%) rotate(180deg) scale(0.6);
 }

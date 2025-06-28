@@ -12,7 +12,7 @@ export default function Header() {
   /* Custom Hooks */
   const { toggleDarkMode } = useDarkMode()
   const { results, isReady, clear } = useSearch(inputValue)
-  /* Refs */
+  /* Refs, id, etc */
   const inputRef = useRef<HTMLInputElement>(null)
 
   console.log(isReady, ' - ' ,results)
@@ -59,7 +59,7 @@ export default function Header() {
       </div>
 
       <div className="flex items-center space-x-xs">
-        <form action="" className="lg:hidden relative">
+        <form action="" className="lg:hidden relative overflow-hidden">
           <input
             ref={inputRef}
             type="text"
@@ -67,7 +67,11 @@ export default function Header() {
             onChange={(event) => setInputValue(event.target.value)}
             className={styles.input}
           />
-          <button type="button" onClick={clearInput} className={clsx(styles.inputClearBtn, !inputValue && "hidden")}>
+          <button
+            type="button"
+            onClick={clearInput}
+            className={clsx(styles.inputClearBtn, !inputValue && styles.inputClearBtnHidden)}
+          >
             <span className="i-iconamoon:close"></span>
           </button>
         </form>
