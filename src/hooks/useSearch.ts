@@ -3,7 +3,20 @@ import { SearchContext } from "../context/SearchProvider.tsx"
 import { type Results, search } from "@orama/orama"
 import useDebounce from "./useDebounce.ts"
 
-export function useSearch(input: string) {
+interface OutputType {
+  results: Results<any> | undefined
+  isReady: boolean
+  clear: () => void
+}
+
+/**
+ * Hook for use orama lib
+ * @return
+ *  * `results` - type object from orama
+ *  * `isReady` - boolean if result is ready
+ *  * `clear` - function immediate cleaning
+ */
+export function useSearch(input: string): OutputType {
   const { db, isIndexed } = useContext(SearchContext)
   const [isReady, setIsReady] = useState(false)
   const [results, setResults] = useState<Results<any>>()
@@ -37,5 +50,10 @@ export function useSearch(input: string) {
     }
   }, [isIndexed, debouncedInput])
 
-  return { results, isReady }
+  const clear = () => {
+    setIsReady(false)
+    setResults(undefined)
+  }
+
+  return { results, isReady, clear }
 }

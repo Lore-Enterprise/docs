@@ -1,15 +1,19 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import useDarkMode from "../../hooks/useDarkMode.ts"
 import styles from "./Header.module.css"
 import { useSearch } from "../../hooks/useSearch.ts"
 import clsx from "clsx"
 
 export default function Header() {
+  /* States */
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [inputValue, setInputValue] = useState("")
+  /* Custom Hooks */
   const { toggleDarkMode } = useDarkMode()
-  const { results, isReady } = useSearch(inputValue)
+  const { results, isReady, clear } = useSearch(inputValue)
+  /* Refs */
+  const inputRef = useRef<HTMLInputElement>(null)
 
   console.log(isReady, ' - ' ,results)
 
@@ -38,6 +42,12 @@ export default function Header() {
     setIsSearchOpen(!isSearchOpen)
   }
 
+  const clearInput = () => {
+    setInputValue('')
+    clear()
+    requestAnimationFrame(() => inputRef.current?.focus())
+  }
+
   return (
     <header className={styles.header}>
       <div className="flex items-center space-x-xs">
@@ -49,13 +59,17 @@ export default function Header() {
       </div>
 
       <div className="flex items-center space-x-xs">
-        <form action="" className="lg:hidden">
+        <form action="" className="lg:hidden relative">
           <input
+            ref={inputRef}
             type="text"
             value={inputValue}
             onChange={(event) => setInputValue(event.target.value)}
             className={styles.input}
           />
+          <button type="button" onClick={clearInput} className={clsx(styles.inputClearBtn, !inputValue && "hidden")}>
+            <span className="i-iconamoon:close"></span>
+          </button>
         </form>
         <button onClick={toggleSearchOpen} className={clsx(styles.searchBtn, isSearchOpen && styles.searchBtnOpen)}>
           <span className="i-iconamoon:search"></span>

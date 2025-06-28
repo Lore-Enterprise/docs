@@ -4,6 +4,8 @@ export default function useDebounce<T>(value: T, delay: number): T {
   const [debouncedValue, setDebouncedValue] = useState<T>(value)
 
   useEffect(() => {
+    if (typeof value === "string" && !value) return setDebouncedValue(value)
+
     const timeoutId = setTimeout(() => {
       setDebouncedValue(value)
     }, delay)

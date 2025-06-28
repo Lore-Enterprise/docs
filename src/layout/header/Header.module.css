@@ -4,7 +4,14 @@
 
 .input {
   outline: none;
-  @apply border border-gray-light dark:border-gray-dark rounded-md py-1 px-2.5 h-8 dark:bg-black-secondary;
+  width: 250px;
+  @apply border border-gray-light dark:border-gray-dark rounded-md py-1 pl-2.5 pr-7 h-8 dark:bg-black-secondary;
+}
+
+.inputClearBtn {
+  top: 50%;
+  transform: translateY(-50%);
+  @apply flex absolute right-1 bg-transparent text-gray-dark hover:text-inherit duration-100;
 }
 
 .burgerMenuBtn {
